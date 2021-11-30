@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise 对象</title>
+</head>
+<body>
+<p>Promise 新建后就会立即执行。</p>
+</body>
+<script>
+    let promise = new Promise(function (resolve,reject) {
+        console.log("1,promise");
+        resolve();
+    })
+    console.log("在 2 hello 之前按照顺序执行")
+    promise.then(function () {
+        console.log('3,resolved')
+    })
+    console.log("2,hello")
+
+    // promise 新建之后立即就会执行---所以就会立即执行 输出 1,promise
+    // then  方法指定的回调函数，将在当前脚本所有任务同步执行完成之后才会执行----输出 在 2 hello 之前按照顺序执行 和 1，hello
+    // 当当前脚本执行完毕之后，then里的内容才会执行 ----  输出 3，resolved
+
+    function loadImageAsync(url) {
+        console.log(url)
+        return new Promise(function(resolve, reject) {
+            const image = new Image();
+           // console.log('获取图片成功')
+            image.onload = function() {
+                resolve(image);
+            };
+
+            image.onerror = function() {
+                reject(new Error('Could not load image at ' + url));
+            };
+
+            image.src = url;
+        });
+    }
+    loadImageAsync('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201301%2F05%2F163809wo066osj41x6xwo2.jpg&refer=http%3A%2F%2Fattach.bbs.miui.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1626320314&t=810a775a054806f1fff84eab0294eccf')
+</script>
+</html>

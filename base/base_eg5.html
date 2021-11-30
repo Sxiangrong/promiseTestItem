@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>当多个采用链式的then 函数调用时，可以使用箭头函数来替代链式的then 函数</p>
+</body>
+<script>
+    const getJson = function (url) {
+        const  promise = new Promise(function (resolve, reject) {
+            // 包裹的第一个函数
+            const handler = function () {
+                if(this.readyState !== 4){
+                    return;
+                }
+                if(this.status === 200){
+                    resolve(this.response);
+                }else {
+                    reject(new Error(this.statusText))
+                }
+            }
+            const client = new XMLHttpRequest();
+            client.open('GET',url);
+            client.onreadystatechange = handler;
+            client.responseType = 'json';
+            client.setRequestHeader('Accept','application/json');
+            client.send();
+        });
+        return promise;
+    }
+    // getJson('./base_eg3.json').then(function (json) {
+    //     console.log(json)
+    //     return getJson(json);
+    // }).then( function (comments) {
+    //     console.log("resolved:",comments)
+    // },function (err) {
+    //     console.log("reject:",err)
+    // })
+
+    getJson("./base_eg3.json").then(
+        json => getJson(json.commentURL)
+    ).then(
+        comments => console.log("resolved: ", comments),
+        err => console.log("rejected: ", err)
+    );
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .first{
+            width: 100px;
+            height: 100px;
+            border:2px solid blue;
+            position: relative;
+            /*left--和 top并不改变对象原本在文档流中的占据的位置*/
+            left: 20px;
+            top:20px;
+            /*margin-top 和margin-left 会让整个盒子上移或者下移*/
+            /*margin-top: 20px;*/
+            /*margin-left: 20px;*/
+        }
+        .second{
+            width: 100px;
+            height: 100px;
+            border:2px solid black;
+        }
+        .parent{
+            width: 300px;
+            height: 300px;
+            border:1px solid red;
+            position: relative;
+            background-color: red;
+        }
+        .sub-parent{
+            width: 200px;
+            height: 200px;
+            border:1px solid black;
+            position: static;
+            margin-left: 20px;
+            background-color: black;
+        }
+        .sub-parent-first{
+            width: 100px;
+            height: 100px;
+            border: 1px solid saddlebrown ;
+            background-color: coral;
+        }
+        .sub-parent-second{
+            width: 100px;
+            height: 100px;
+            border:2px solid green;
+            position: absolute;
+            left: 10px;
+            top:0;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<p>验证position的四个定位在文本流中中的四个位置</p>
+
+<div class="first">
+    <p>演示relative的定位</p>
+</div>
+<div class="second">
+</div>
+<div style="margin: 20px">
+    <span>父子之间的关系不能用z-index 来设置上下级，永远都是子级在上父级在下</span>
+</div>
+<div class="parent">
+    <p>演示absolute</p>
+    <div class="sub-parent">
+        <div class="sub-parent-first">我是第三层</div>
+        <div class="sub-parent-second">我是第四层</div>
+    </div>
+</div>
+</body>
+</html>

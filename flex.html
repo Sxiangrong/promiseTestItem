@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fdsfsd</title>
+</head>
+<style>
+.box{
+    width: 500px;
+    height: 300px;
+    margin:0 auto;
+    overflow-y: auto;
+    overflow-x: auto;
+    background-color: #fddcc6;
+    display: flex;
+    /*布局方向*/
+    flex-direction: column;
+    position: relative;
+
+}
+    .main{
+        margin: 10px;
+        background-color: coral;
+        /*也就是11 auto  不扩大自己的内容*/
+        flex:1;
+
+
+    }
+    .footer{
+        background-color: blue;
+        width: 480px;
+        height: 30px;
+        /*flex: none;*/
+        z-index:999;
+        justify-self: center;
+        position: fixed;
+        margin-top: 260px;
+    }
+    .contain{
+        width: 500px;
+        height: 300px;
+        margin:0 auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: #fddcc6;
+        position: relative;
+    }
+    .content{
+        height: 500px;
+        width: 400px;
+        margin: 10px;
+        background-color: coral;
+        z-index:1;
+    }
+    .footer1{
+        /*fixed 是对于浏览器的视图来固定定位，而sticky 是相对于当前文父容器来说明他的位置*/
+        position: sticky;
+        bottom: 10px;
+        width: 100%;
+        height: 30px;
+        background-color: blue;
+        z-index: 2;
+    }
+</style>
+<body>
+<p>flex</p>
+<div class="box">
+<div class="main">
+    <h3>筛选</h3>
+    <p>111111</p>
+    <p>22222</p>
+    <p>2223535</p>
+    <p>54455545</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>111111</p>
+    <p>22222</p>
+    <p>2223535</p>
+    <p>54455545</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>55555555</p>
+    <p>55555555</p>
+</div>
+    <div class="footer" >
+        <button>test</button>
+    </div>
+</div>
+<p>css</p>
+<div class="contain">
+    <div class="content">
+        <h3>筛选</h3>
+        <p>111111</p>
+        <p>22222</p>
+        <p>2223535</p>
+        <p>54455545</p>
+        <p>55555555</p>
+        <p>55555555</p>
+        <p>55555555</p>
+        <p>55555555</p>
+        <p>55555555</p>
+        <p>55555555</p>
+    </div>
+    <div class="footer1" >
+        <button>test1111</button>
+    </div>
+</div>
+</body>
+</html>

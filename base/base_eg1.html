@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise 栗子</title>
+</head>
+<body>
+<p>promise 对象执行的顺序</p>
+</body>
+<script>
+    function  timeout(ms) {
+        return new Promise((resolve,reject) =>{
+            setTimeout(resolve,ms,'done');
+            // 调用 resolve 后，在ms 秒后将‘done’值 作为promise对象的返回值
+        });
+    }
+    // Promise实例的状态变为resolved，就会触发then方法绑定的回调函数。
+    timeout(200).then((value) =>{
+        console.log(value);
+        // 输出 done
+    })
+</script>
+</html>

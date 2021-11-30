@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>固定不动</title>
+</head>
+<!--当滚动条在滚动使，使右侧的内容固定不动的-->
+<style>
+    .container{
+        width: 500px;
+        height: 300px;
+        margin:0 auto;
+        overflow-y: auto;
+        overflow-x: auto;
+        position: relative;
+        background-color: #fddcc6;
+    }
+    .left-box{
+        width: 400px;
+        height: 500px;
+        position: absolute;
+        margin: 10px;
+        background-color: coral;
+    }
+    .right-box{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        position: fixed;
+        margin-top: 240px;
+        margin-left: 430px;
+        background-color: blue;
+    }
+    .box{
+        width: 500px;
+        height: 300px;
+        margin:0 auto;
+        overflow-y: auto;
+        overflow-x: auto;
+        background-color: #fddcc6;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        position: relative;
+    }
+    .boxLeft{
+        background-color: coral;
+        width: 400px;
+        height: 500px;
+        margin: 10px;
+    }
+    .boxRight{
+        background-color: blue;
+        width: 40px;
+        height: 40px;
+        /*margin: 10px;*/
+        border-radius: 50%;
+        /* 使用flex 布局让他的子元素的对齐方式*/
+        align-self:flex-end;
+        position: fixed;
+        margin-bottom: 10px;
+        margin-right: 0;
+        margin-left: 430px;
+    }
+</style>
+<body>
+<p>css 布局实现</p>
+<div class="container">
+    <div class="left-box">
+        <p style="margin-bottom: 30px">111111111111111111111111</p>
+        <p style="margin-bottom: 30px">222222222222222222222222</p>
+        <p style="margin-bottom: 30px">333333333333333333333333</p>
+        <p style="margin-bottom: 30px">444444444444444444444444</p>
+        <p style="margin-bottom: 30px">555555555555555555555555</p>
+        <p style="margin-bottom: 30px">666666666666666666666666</p>
+        <p style="margin-bottom: 30px">777777777777777777777777</p>
+        <p style="margin-bottom: 30px">888888888888888888888888</p>
+    </div>
+    <div class="right-box"></div>
+</div>
+<p>flex 布局实现</p>
+<div class="box">
+    <div class="boxLeft">
+            <p style="margin-bottom: 30px">111111111111111111111111</p>
+            <p style="margin-bottom: 30px">222222222222222222222222</p>
+            <p style="margin-bottom: 30px">333333333333333333333333</p>
+            <p style="margin-bottom: 30px">444444444444444444444444</p>
+            <p style="margin-bottom: 30px">555555555555555555555555</p>
+            <p style="margin-bottom: 30px">666666666666666666666666</p>
+            <p style="margin-bottom: 30px">777777777777777777777777</p>
+            <p style="margin-bottom: 30px">888888888888888888888888</p>
+        </div>
+    <div class="boxRight"></div>
+</div>
+</body>
+</html>

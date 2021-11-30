@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>在一个函数B的内部调用了另一个A函数，那么 A 函数的返回时值将会作为B 函数的
+    执行的起点，当函数B没有接收到A的的返回值时，函数B 不会开始执行
+</p>
+</body>
+<script>
+    const p1 = new Promise(function (resolve, reject) {
+        setTimeout(() =>{
+            console.log("11111");
+            reject(new Error('fail--失败'))
+           // resolve();
+        } ,5000)
+    })
+    // p1 中的对象在3秒钟之后返回reject状态
+    const p2 = new Promise(function (resolve, reject) {
+        setTimeout( () =>{
+            console.log("22222222")
+            resolve(p1)
+        } ,2000)
+
+    })
+    // p2 在1秒后返回 resolve 时调用了 p1(而p1的状态已经是reject)。
+    // 因为 p2  返回的是 p1 的状态，故then 语句 是针对于then语句相变化的。
+    p2
+        .then(result => console.log(result))
+        .catch(error => console.log(error))
+    // 整体的执行流程--p2 先执行， 在执行时2秒后输出2222222后 ，返回resolve 对象去调用p1的内容
+    // （执行p1 里面的内容）在 5 秒之后接着输出1111，因为p1 返回的状态为reject，
+    // 所以 执行p2.catch 捕获道德异常内容
+
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise 的 resolve()方法</title>
+</head>
+<body>
+<p>将现有的promise 对象转化为 Promise 对象</p>
+</body>
+<script>
+    let thenable = {
+        then: function(resolve, reject) {
+            resolve(42);
+        }
+    };
+    console.log("thenable",thenable)
+    let p1 = Promise.resolve(thenable);
+    console.log("p1",p1)
+    p1.then(function (value) {
+        console.log(value);  // 42
+    });
+    // 总结：promise.resolve()方法会将这个对象转为promise 对象，然后立即执行thenable 对象的then 方法
+    // thenable 对象的then（）方法执行后，对象P1状态就变为resolved。从而立即执行最后那个then方法指定的回调函数
+     // 最后输出的结果为42
+</script>
+</html>

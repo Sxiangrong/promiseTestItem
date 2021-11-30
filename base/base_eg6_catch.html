@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遇到的捕获异常 的写法</title>
+</head>
+<body>
+<p>当promise返回的状态时promise时，就会执行catch 里的内容</p>
+</body>
+<script>
+    const promise = new Promise(function(resolve, reject) {
+        try {
+            throw new Error('test');
+        } catch(e) {
+            reject(e);
+        }
+    });
+    promise.catch(function(error) {
+        console.log(error);
+    });
+</script>
+</html>
